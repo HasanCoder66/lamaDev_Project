@@ -1,17 +1,12 @@
 import express from 'express'
-import send from 'send'
+import {user } from '../controllers/userController.js'
 
  const userRoutes = express.Router()
 
 
- userRoutes.get('/', (res , req) => {
-    res.status(200),send({
-        status : "success",
-        message : 'Hey this is users page'
-    })
- })
+ userRoutes.get('/user', user)
 
- export default userRoutes
+ export default userRoutes 
 
 
  

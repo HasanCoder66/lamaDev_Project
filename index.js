@@ -3,7 +3,8 @@ import mongoose from 'mongoose'
 import morgan from 'morgan'
 import dotenv from 'dotenv'
 import helmet from 'helmet'
-import Routes from './routes/userRoutes.js'
+import userRoutes from './routes/userRoutes.js'
+import authRoutes from './routes/authRoute.js'
 
 const uri = 'mongodb+srv://66CoderHasan:rRfk3uauLRHm2Jv5@cluster0.xrkrjyp.mongodb.net/66CoderHasan?retryWrites=true&w=majority'
 dotenv.config()
@@ -26,7 +27,8 @@ app.use(morgan('common'));
 app.use(helmet());
 
 // get post Api
-app.get('/api', Routes)
+app.use("/api", userRoutes)
+app.use("/api", authRoutes)
 
 
 connectDb()
