@@ -1,10 +1,10 @@
 import express from 'express'
-import {user } from '../controllers/userController.js'
+import {userReq } from '../controllers/userController.js'
 
  const userRoutes = express.Router()
 
 
- userRoutes.get('/user', user)
+ userRoutes.get('/user', userReq)
 
  export default userRoutes 
 
