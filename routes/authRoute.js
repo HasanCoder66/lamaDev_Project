@@ -1,12 +1,13 @@
 import express from 'express'
-import { auth} from '../controllers/userController.js'
+import { register , login} from '../controllers/userController.js'
 
 // import send from 'send'
 
  const authRoutes = express.Router()
 
 
- authRoutes.post('/register', auth)
+ authRoutes.post('/register', register)
+ authRoutes.post('/login', login)
 
  export default authRoutes 
 
