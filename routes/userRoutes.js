@@ -1,10 +1,9 @@
 import express from 'express'
-import {login } from '../controllers/userController.js'
+import {userUpdate}  from '../controllers/userContraller.js'
 
  const userRoutes = express.Router()
 
-
- userRoutes.get('/user', login)
+ userRoutes.put('/:id',userUpdate)
 
  export default userRoutes 
 
