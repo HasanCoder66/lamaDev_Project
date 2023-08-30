@@ -26,7 +26,22 @@ export const userUpdate = async (req , res) => {
         return res.status(403).json("You can update only your account")
     }
 }
-// delete 
+
+// delete user
+export const userDelete = async (req , res) => {
+    if ( req.body.userId  === req.params.id || req.body.isAdmin){
+        try {
+            const user = await User.findByIdAndDelete(req.params.id)
+            res.status(200).json("Account Has been Delete Successfully")
+        } catch (error) {
+           res.status(500).json(error)
+        }
+    } else {
+        return res.status(403).json("Your can delete only your account ")
+    }
+}
+
+
 // edit
 // get data 
 

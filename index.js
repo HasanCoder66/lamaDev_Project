@@ -19,7 +19,6 @@ const connectDb = () => {
 const app = express();
 const port = 8800
 
-
 // MiddleWares
 
 app.use(express.json());
@@ -27,8 +26,8 @@ app.use(morgan('common'));
 app.use(helmet());
 
 // get post Api
-app.use("/api", userRoutes)
 app.use("/api", authRoutes)
+app.use("/api", userRoutes)
 
 
 connectDb()
@@ -38,4 +37,3 @@ app.listen(port, () => {
 
 
 
-// minutes 12:34 lamadev
