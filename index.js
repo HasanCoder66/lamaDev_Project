@@ -5,6 +5,7 @@ import dotenv from 'dotenv'
 import helmet from 'helmet'
 import userRoutes from './routes/userRoutes.js'
 import authRoutes from './routes/authRoute.js'
+import followRoutes from './routes/followRoute.js'
 
 const uri = 'mongodb+srv://66CoderHasan:rRfk3uauLRHm2Jv5@cluster0.xrkrjyp.mongodb.net/66CoderHasan?retryWrites=true&w=majority'
 dotenv.config()
@@ -28,6 +29,7 @@ app.use(helmet());
 // get post Api
 app.use("/api", authRoutes)
 app.use("/api", userRoutes)
+app.use("/api", followRoutes)
 
 
 connectDb()

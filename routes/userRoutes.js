@@ -1,11 +1,11 @@
 import express from 'express'
-import {userUpdate, userDelete , gettingAllUsers}  from '../controllers/userContraller.js'
+import {userUpdate, userDelete , getUsers}  from '../controllers/userContraller.js'
 
  const userRoutes = express.Router()
 
  userRoutes.put('/:id', userUpdate)
  userRoutes.delete('/:id', userDelete)
- userRoutes.get('/:id', gettingAllUsers)
+ userRoutes.get('/:id', getUsers)
 
  export default userRoutes 
 

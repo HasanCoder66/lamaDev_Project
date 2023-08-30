@@ -43,7 +43,7 @@ export const userDelete = async (req , res) => {
 
 
 // getUsers
-export const gettingAllUsers = async (req , res ) => {
+export const getUsers = async (req , res ) => {
     try {
         const user = await User.findById(req.params.id);
         const {password , updatedAt , ...others} = user._doc
