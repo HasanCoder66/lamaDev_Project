@@ -6,6 +6,7 @@ import helmet from 'helmet'
 import userRoutes from './routes/userRoutes.js'
 import authRoutes from './routes/authRoute.js'
 import followRoutes from './routes/followRoute.js'
+import postRoutes from './routes/postRoute.js'
 
 const uri = 'mongodb+srv://66CoderHasan:rRfk3uauLRHm2Jv5@cluster0.xrkrjyp.mongodb.net/66CoderHasan?retryWrites=true&w=majority'
 dotenv.config()
@@ -30,12 +31,13 @@ app.use(helmet());
 app.use("/api", authRoutes)
 app.use("/api", userRoutes)
 app.use("/api", followRoutes)
+app.use("/api", postRoutes)
 
 
 connectDb()
 app.listen(port, () => {
     console.log('backend server works live')
-})
+});
 
 
 
