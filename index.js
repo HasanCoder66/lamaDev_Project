@@ -29,9 +29,9 @@ app.use(helmet());
 
 // get post Api
 app.use("/api", authRoutes)
-app.use("/api", userRoutes)
 app.use("/api", followRoutes)
 app.use("/api", postRoutes)
+app.use("/api", userRoutes)
 
 
 connectDb()
