@@ -79,3 +79,18 @@ export const getPost = async (req , res ) => {
 
 
 // get timeline posts 
+export const getTimeline = async (req , res ) => {
+    let postArray = [];
+    try {
+        const currentUser = await User.findById(req.body.id)
+        const postUser = await Post.findById({userId : currentUser._id })
+        const friendPosts = await Promise.all(
+            currentUser.followings.map((friendId)=>{
+              return  Post.find({userId : friendId})
+            })
+        );
+        res.status(200).json(postUser.concat(...friendPosts))
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
