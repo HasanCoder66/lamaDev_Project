@@ -5,6 +5,7 @@ import bcrypt from 'bcrypt'
 // console.log(userSchema);
 
 //Login
+//  localhost:8800/api/login
 export const login = async (req, res) => {
     try {
         const user = await User.findOne({ email: req.body.email })
@@ -21,6 +22,7 @@ export const login = async (req, res) => {
 }
 
 // Register
+//  localhost:8800/api/register
 export const register = async (req, res) => {
     
     try {

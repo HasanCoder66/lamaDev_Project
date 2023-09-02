@@ -34,9 +34,9 @@ app.use("/api", postRoutes)
 app.use("/api", userRoutes)
 
 
-connectDb()
 app.listen(port, () => {
     console.log('backend server works live')
+    connectDb()
 });
 
 

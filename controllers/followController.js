@@ -1,6 +1,8 @@
 import User from '../models/userSchema.js'
 
 // followUser
+// localhost:8800/api/:id/follow
+
 export const followUser = async (req, res) => {
     if (req.body.userId !== req.params.id) {
         try {
@@ -22,6 +24,8 @@ export const followUser = async (req, res) => {
 }
 
 // unfollowUser
+// localhost:8800/api/:id/unfollow
+
 export const unFollowUser = async (req, res) => {
     if (req.body.userId !== req.params.id) {
         try {

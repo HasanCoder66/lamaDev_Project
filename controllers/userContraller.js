@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt'
 
 
 // update user
+// localhost:8800/api/:id
 export const userUpdate = async (req , res) => {
     if ( req.body.userId  === req.params.id || req.user.isAdmin){
         if( req.body.password){
@@ -28,6 +29,7 @@ export const userUpdate = async (req , res) => {
 }
 
 // delete user
+// localhost:8800/api/:id
 export const userDelete = async (req , res) => {
     if ( req.body.userId  === req.params.id || req.body.isAdmin){
         try {
@@ -43,6 +45,7 @@ export const userDelete = async (req , res) => {
 
 
 // getUsers
+// localhost:8800/api/:id
 export const getUsers = async (req , res ) => {
     try {
         const user = await User.findById(req.params.id);

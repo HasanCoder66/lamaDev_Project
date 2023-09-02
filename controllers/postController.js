@@ -1,6 +1,9 @@
 import Post from '../models/postSchema.js'
+import User from '../models/userSchema.js'
 
 // Create post 
+// localhost:8800/api/post
+
 export const Createpost = async (req, res) => {
     const newPost = new Post(req.body)
     try {
@@ -12,6 +15,8 @@ export const Createpost = async (req, res) => {
 }
 
 // update post
+// localhost:8800/api/:id/updatepost
+
 export const updatePost = async (req , res ) => {
     try {
         const post = await Post.findById(req.params.id)
@@ -30,6 +35,8 @@ export const updatePost = async (req , res ) => {
 
 
 // Delete post
+// localhost:8800/api/:id/deletePost
+
 export const deletePost = async (req , res ) => {
     try {
         const post = await Post.findById(req.params.id)
@@ -48,6 +55,7 @@ export const deletePost = async (req , res ) => {
 
 
 // like post or dislike post
+// localhost:8800/api/:id/likePost
 export const likePost = async (req , res ) => {
     try {
         const post = await Post.findById(req.params.id)
@@ -67,6 +75,8 @@ export const likePost = async (req , res ) => {
 
 
 // get a post
+// localhost:8800/api/:id
+
 export const getPost = async (req , res ) => {
     try {
         const post = await Post.findById(req.params.id)
@@ -79,18 +89,34 @@ export const getPost = async (req , res ) => {
 
 
 // get timeline posts 
+//localhost:8800/api/timeline/all
+
 export const getTimeline = async (req , res ) => {
-    let postArray = [];
+    // let postArray = [];
     try {
-        const currentUser = await User.findById(req.body.id)
-        const postUser = await Post.findById({userId : currentUser._id })
+        const currentUser = await User.findById(req.body.userId)
+        console.log(currentUser)
+        const postUser = await Post.find({userId : currentUser._id })
         const friendPosts = await Promise.all(
             currentUser.followings.map((friendId)=>{
               return  Post.find({userId : friendId})
             })
         );
-        res.status(200).json(postUser.concat(...friendPosts))
+        res.json(postUser.concat(...friendPosts))
     } catch (error) {
         res.status(500).json(error)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
